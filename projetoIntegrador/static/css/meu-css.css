@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin: 0px;
+	padding: 0px;
+	background-image: url(../images/banner01.jpg);
+	background-size: cover;
+	background-position: center;
+	background-color: rgba(25,44,109,0.93);
+	background-blend-mode: multiply;
+}
+#form-container{
+	min-width: 100vw;
+	min-height: 100vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+#form-box{
+	width: 300px;
+	padding: 20px;
+	box-sizing: border-box;
+	background: #ffffff;
+}
+
+#form-box input{
+	font-size: large;
+}
+.panel img{
+	max-width: 250px;
+}
+
+/*página principal*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

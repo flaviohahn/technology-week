@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* CSS Document */
+#banner{
+	min-height: 100vh;
+	box-sizing: border-box;
+	padding: 20px;
+	color: white;
+	
+	background-image: url(/media/images/banner01.jpg);
+	background-size: cover;
+	background-position: center;
+	
+	background-color: rgba(25,44,109,0.93);
+	background-blend-mode: multiply;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#banner h1{
+	margin-bottom: 10px;
+	font-size: 80px;
+}
+#banner h2{
+	margin: 0;
+	font-size: 30px;
+	text-align: center;
+}
+#navbar{
+	margin: 0;
+	border-radius: 0;
+
+}
+#banner img{
+	max-width: 500px;
+	
+}
+
+#logo-menu img{
+    max-width: 100px;
+    margin:0;
+    padding:0;
+}
+#sobre{
+	
+	padding-bottom: 40px;
+}
+.carousel-inner{
+	max-height: 500px;
+}
+#texto-sobre{
+	padding: 40px;
+}
+#texto-sobre h3{
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+	text-align: center;
+	padding-bottom: 30px;
+	font-weight: bold;
+}
+#texto-sobre p{
+	text-align: justify;
+}
+
+section{
+	box-sizing: border-box;
+	padding: 20px 0 50px;
+}
+section .title{
+	display: inline-block;
+	margin: 10px auto 40px;
+	padding: 0 10px 5px;
+	border-bottom: 3px solid #222222;
+}
+
+section:nth-child(odd){
+	background-color: #e2e2e2;
+}
+
+.footer-links{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 5px 15px;
+}
+footer{
+	background-color: #222222;
+	padding: 20px;
+	color: white;
+}
+.icon-social{	
+	height: 40px;
+	width: 40px;
+	display: block;
+	background-size: contain;
+	margin: 5px 15px;
+}
+.icon-social.facebook{
+	background-image: url(../icon/002-facebook-logo-button.png);
+}
+.icon-social.twitter{
+	background-image: url(../icon/001-twitter-logo-button.png)
+}
+.icon-social.youtube{
+	background-image: url(../icon/004-youtube-symbol.png)
+}
+.icon-social.instagram{
+	background-image: url(../icon/003-instagram-logo.png)
+}
+
+#palestrantes .thumbnail img{
+	width: 100%;
+	
+}
+#assine .realizacao {
+	text-align: center;
+}
+#assine .realizacao h4{
+	padding-bottom: 40px;
+}
+#assine .realizacao img{
+	max-width: 350px;
+}
+.newslatter{
+	padding-left: 15%;
+	padding-top: 10%;
+	padding-right: 15%;
+}
+
+.affix{
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+#titulo{
+    text-transform: uppercase;
+    text-style: bold;
+}
+.thumbnail img{
+    max-height: 350px;
+}

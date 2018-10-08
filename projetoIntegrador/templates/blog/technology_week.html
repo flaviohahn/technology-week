@@ -1,0 +1,259 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Technology Week</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+	<header>
+		<nav class="navbar navbar-inverse" id="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#banner">Technology Week</a>
+                    </div>
+
+
+					<div class="collapse navbar-collapse" id="nav-menu">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="#banner">Home</a></li>
+                            <li><a href="#sobre">Sobre</a></li>
+                            <li><a href="#agenda">Agenda</a></li>
+                            <li><a href="#palestrantes">Palestrantes</a></li>
+                            <li><a href="#local">Local</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#modal-inscricao">Inscrição</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+		<div id="banner">
+			{% block conteudotopo %}
+			{% for eventos in listaEventos %}
+				<img src="media/images/logo_principal.png">
+				<h1>{{eventos.nome_evento}}  {{eventos.edicao}}</h1>
+				<h2>{{eventos.local_evento}}</h2>
+			{% endfor %}
+			{% endblock conteudotopo %}
+		</div>
+
+
+
+	</header>
+	<main>
+		<section id="sobre">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<h3 class="title">Sobre</h3>
+				</div>
+				<div class="row">
+					<div class="col-sm-6" id="banner-rotativo">
+						<div id="carousel-sobre" class="carousel slide" data-ride="carousel">
+							<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+								  <ol class="carousel-indicators">
+									<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+									<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+									<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+								  </ol>
+							<div class="carousel-inner">
+								<div class="item active">
+									<img class="img-responsive" src="media/images/foto01.jpg" alt="Senac/AL">
+								</div>
+								<div class="item">
+									<img class="img-responsive" src="media/images/foto02.jpg" alt="Auditório senac alagoas">
+								</div>
+								<div class="item">
+									<img class="img-responsive" src="media/images/foto03.jpg" alt="Palestra senac alagoas">
+								</div>
+							</div>
+							<a class="left carousel-control" href="#carousel-sobre" data-slide="prev"><span class="icon-prev"></span></a>
+							<a class="right carousel-control" href="#carousel-sobre" data-slide="next"><span class="icon-next"></span></a>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-sm-6" id="texto-sobre">
+						{% block conteudosobre %}
+						{% for eventos in listaEventos %}
+						<h3>{{eventos.nome_evento}}  {{eventos.edicao}}</h3>
+						<p>{{eventos.descricao_evento}}</p>
+						{% endfor %}
+						{% endblock conteudosobre %}
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="agenda">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<h3 class="title"> Agenda </h3>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#palestras" data-toggle="tab" >Palestras e Oficinas </a></li>
+						</ul>
+
+						<div class="tab-content">
+							{% block conteudoAgenda %}
+							{% for palestra_oficina in listaPalestraOficina %}
+							<div class="tab-pane active" id="palestras">
+								<div class="list-group">
+									<span class="list-group-item active">
+
+										<h4 class="list-group-item-heading">{{palestra_oficina.data_po}} às {{palestra_oficina.hora_po}}</h4>
+										<h3 id="titulo"><b>{{palestra_oficina.tipo}}:</b> {{palestra_oficina.nome_palestra}}</h3>
+										<p class="list-group-item-text">Com {{palestra_oficina.id_palestrante_instrutor}}</p>
+										<br>
+										<a href="" data-toggle="modal" data-target="#modal-inscricao" class="btn btn-warning"> QUERO PARTICIPAR </a>
+
+									</span>
+								</div>
+							</div>
+							{% endfor %}
+							{% endblock conteudoAgenda %}
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</section>
+		<section id="palestrantes">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<h3 class="title">Palestrantes</h3>
+				</div>
+				{% block conteudo %}
+				{% for palestrantes in lista %}
+				<div class="col-sm-6 col-md-3">
+					<div class="thumbnail">
+					<img src="{{MEDIA}}{{palestrantes.foto_palestrante.url}}" alt="foto palestrante">
+						<div class="caption">
+							<h3>{{palestrantes.nome_palestrante_instrutor}}</h3>
+							<p>{{palestrantes.mini_curriculo}}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				{% endblock conteudo %}
+			</div>
+		</section>
+		<section id="local">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<h3 class="title">Como Chegar</h3>
+				</div>
+				<div class="row iframe-container">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1966.8086571092374!2d-35.740776267969736!3d-9.62818065126744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x70145fc0009aefd%3A0x5f3bc9ba671ba36a!2sSENAC+-+Posto+Avan%C3%A7ado+de+Tecnologia!5e0!3m2!1spt-BR!2sbr!4v1535638175881" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+			</div>
+		</section>
+		<section id="assine">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<h3 class="title">Fique por Dentro</h3>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-md-6">
+						<div class="newslatter">
+						<h4>newsletter</h4>
+							<form method="post" action="" target="_blank">
+								<div class="input-group">
+									<input type="email" class="form-control" name="email" placeholder="Digite seu email" required>
+									<span class="input-group-btn">
+										<button class="btn btn-success" type="submit">Enviar!</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-6 realizacao">
+						<h4>realização</h4>
+						<img src="media/images/senac_logo.png" alt="Logo senac/Al">
+						<div class="caption">
+							<h3>Senac/AL</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<div class="footer-links">
+
+			<a href="#" target="_blank" class="icon-social instagram" data-toggle="tooltip" data-placement="top" title="Siga"></a>
+
+			<a href="#" target="_blank" class="icon-social youtube" data-toggle="tooltip" data-placement="top" title="Assista"></a>
+
+			<a href="#" target="_blank" class="icon-social twitter" data-toggle="tooltip" data-placement="top" title="Comente"></a>
+
+			<a href="#" target="_blank" class="icon-social facebook" data-toggle="tooltip" data-placement="top" title="Compartilhe"></a>
+
+		</div>
+
+       <a href="http://127.0.0.1:8000/admin/" class="btn btn-success">Logar no Sistemas</a>
+       <p class="text-center">© 2018 - Technology Week - Senac/AL</p>
+	</footer>
+
+	<div class="modal fade" id="modal-inscricao" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+					<h4 class="modal-title">Faça sua inscrição</h4>
+				</div>
+
+				<div class="modal-body">
+					<form method="post" action="" target="_blank">
+
+						<div class="form-group">
+							<label for="nome" class="control-label">Nome</label>
+							<input type="text" class="form-control" name="nome" placeholder="Digite seu nome" required>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="control-label">E-mail</label>
+							<input type="email" class="form-control" name="email" placeholder="Digite seu e-mail" required>
+						</div>
+						<div class="form-group">
+							<label for="phone" class="control-label">Telefone</label>
+							<input type="phone" class="form-control" name="phone" placeholder="(00) 00000-0000" required>
+						</div>
+						<div class="form-group">
+							<label for="cpf" class="control-label">CPF</label>
+							<input type="cpf" class="form-control" name="cpf" placeholder="000.000.000-00" required>
+						</div>
+						<div class="form-group">
+							<label for="inputState">Palestra e/ou Oficina</label>
+							  <select id="inputState" class="form-control">
+								<option selected></option>
+							  </select>
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-success">Enviar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    </body>
+</html>

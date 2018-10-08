@@ -1,0 +1,8 @@
+*.pyc
+*~
+__pycache__
+myvem
+db.sqlite3
+db.mysql
+/static
+,DS_Store
